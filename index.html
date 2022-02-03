@@ -1,12 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Safe Eats</title>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+    </head>
+    <body>
+    <header>
+        <h1>
+            <a href="/">Safe Eats</a>
+        </h1>
+    </header>
+    <section class="hero">
+        <div class="allergy">
+            <h3> </h3>
+            <p> Allergy Type</p>
+            <form>
+                <div class="search_keywords">
+                <label for="name">Search:</label>
+                <input type="text" placeholder="Search Keywords" name="name" id="name" class="form-input">
+                </div>
+                <label for="checkbox" >
+                     Dairy
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Eggs
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Tree Nuts
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Peanuts
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Shellfish
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Wheat
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" />
+                 <label for="checkbox" >
+                     Soy
+                 </label>
+                 <input type="checkbox" name="" id="checkbox" /><br>
+                 
+                 <div class="course">
+                    <h3> </h3>
+                    <p>Course Type</p>
+                    <label for="checkbox" >
+                        Breakfest
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Lunch
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Dinner
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" /><br> 
+                 </div>
+                 <div class="food_type">
+                    <h3> </h3>
+                    <p> Food Type</p>
+                    <label for="checkbox" >
+                        Salads
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Desserts
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Drinks
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" /><br>  
+                </div>
+                <div class="diet_type">
+                    <h3> </h3>
+                    <p> Diet Type</p>
+                    <label for="checkbox" >
+                        Ketogenic diet
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Vegetarian diet
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" />
+                    <label for="checkbox" >
+                        Vegan diet
+                    </label>
+                    <input type="checkbox" name="" id="checkbox" /><br>  
+                </div>
+                <div>
+                    <button type="submit" class="btn">Generate</button>
+                </div>
+               </form>
+              </div>
+            </section>
+            <section class= "recipe">
+                <div class="recipe_img">
+                    <label for="text"> Recipe </label><br>
+                    <input type="text" placeholder="" name="name" id="recipe" class="recipe_placeholder">
+                </div>
+                <div>
+                    <button type="submit" class="btn_2">Generate Another Recipe </button> 
+                </div>
+            </section>
+    <footer>
+        <h5>© 2022 - Safe Eats</h5> 
+    </footer>
+    </body>
 </html>
