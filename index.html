@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-        <title>Safe Eats</title>
-        <!-- <link rel="stylesheet" href="style.css"> -->
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Safe Eats</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
     <header>
-        <h1>
-            <a href="/">Safe Eats</a>
-        </h1>
+        <div class="columns is-vcentered">
+            <div class="column is-full">
+                <h1>
+                    <a href="/">Safe Eats</a>
+                </h1>
+            </div>
+          </div>
     </header>
     <section class="hero">
         <div class="allergy">
@@ -19,103 +26,107 @@
             <p> Allergy Type</p>
             <form>
                 <div class="search_keywords">
-                <label for="name">Search:</label>
-                <input type="text" placeholder="Search Keywords" name="name" id="name" class="form-input">
+                    <label for="name">Search:</label>
+                    <input type="text" placeholder="Search Keywords" name="name" id="name" class="form-input">
                 </div>
-                <label for="checkbox" >
-                     Dairy
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Eggs
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Tree Nuts
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Peanuts
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Shellfish
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Wheat
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" />
-                 <label for="checkbox" >
-                     Soy
-                 </label>
-                 <input type="checkbox" name="" id="checkbox" /><br>
-                 
-                 <div class="course">
-                    <h3> </h3>
-                    <p>Course Type</p>
-                    <label for="checkbox" >
+                <label for="checkbox">
+                    Dairy
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Eggs
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Tree Nuts
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Peanuts
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Shellfish
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Wheat
+                </label>
+                <input type="checkbox" name="" id="checkbox" />
+                <label for="checkbox">
+                    Soy
+                </label>
+                <input type="checkbox" name="" id="checkbox" /><br>
+
+                <div class="Meal">
+                    <p>Meal Type</p>
+                    <label for="breakfest">
                         Breakfest
                     </label>
-                    <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
+                    <input type="radio" class="radio" name="meal_catagory" id="breakfest" /><br>
+                    <label for="lucnh">
                         Lunch
                     </label>
-                    <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
-                        Dinner
+                    <input type="radio" class="radio" name="meal_catagory" id="lunch" /><br>
+                    <label for="dinner">
+                        Breakfest
                     </label>
-                    <input type="checkbox" name="" id="checkbox" /><br> 
-                 </div>
-                 <div class="food_type">
+                    <input type="radio" class="radio" name="meal_catagory" id="dinner" />
+                </div>
+
+                <div class="">
                     <h3> </h3>
                     <p> Food Type</p>
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Salads
                     </label>
                     <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Desserts
                     </label>
                     <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Drinks
                     </label>
-                    <input type="checkbox" name="" id="checkbox" /><br>  
+                    <input type="checkbox" name="" id="checkbox" /><br>
                 </div>
                 <div class="diet_type">
                     <h3> </h3>
                     <p> Diet Type</p>
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Ketogenic diet
                     </label>
                     <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Vegetarian diet
                     </label>
                     <input type="checkbox" name="" id="checkbox" />
-                    <label for="checkbox" >
+                    <label for="checkbox">
                         Vegan diet
                     </label>
-                    <input type="checkbox" name="" id="checkbox" /><br>  
+                    <input type="checkbox" name="" id="checkbox" />
                 </div>
                 <div>
                     <button type="submit" class="btn">Generate</button>
                 </div>
-               </form>
-              </div>
-            </section>
-            <section class= "recipe">
-                <div class="recipe_img">
-                    <label for="text"> Recipe </label><br>
-                    <input type="text" placeholder="" name="name" id="recipe" class="recipe_placeholder">
-                </div>
                 <div>
-                    <button type="submit" class="btn_2">Generate Another Recipe </button> 
+                    <button type="reset" class="btn_2">Reset</button>
                 </div>
-            </section>
+            </form>
+        </div>
+    </section>
+    <section class="recipe">
+        <div class="recipe_img">
+            <label for="text"> Recipe </label><br>
+            <input type="text" placeholder="" name="name" id="recipe" class="recipe_placeholder">
+        </div>
+        <div>
+            <button type="submit" class="btn_3">Generate Another Recipe </button>
+        </div>
+    </section>
     <footer>
-        <h5>© 2022 - Safe Eats</h5> 
+        <h5>© 2022 - Safe Eats</h5>
     </footer>
-    </body>
+</body>
+
 </html>
