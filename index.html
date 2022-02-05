@@ -1,12 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Safe Eats</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    
+    <header>
+        <div class="columns">
+            <div class="column is-full">
+                <h1 class="title">
+                    <a href="/">Safe Eats</a>
+                </h1>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="search_keywords">
+            <label for="name">Search:</label>
+            <input type="text" placeholder="Search Keywords" name="search" id="name" class="search_keywords">
+        </div>
+        <div class="Meal">
+            <h3>Meal Type</h3>
+            <label for="breakfest">
+                Breakfest
+            </label>
+            <input type="radio" class="radio" name="meal_catagory" id="breakfest" /><br>
+            <label for="lucnh">
+                Lunch
+            </label>
+            <input type="radio" class="radio" name="meal_catagory" id="lunch" /><br>
+            <label for="dinner">
+                Breakfest
+            </label>
+            <input type="radio" class="radio" name="meal_catagory" id="dinner" />
+        </div>
+
+        <div class="Cuisine">
+            <h3>Cuisine Type</h3>
+
+            <label for="Chinese_Cuisine">
+                Chinese Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Chinese_Cuisine" /><br>
+            <label for="French_Cuisine">
+                French Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="French_Cuisine" /><br>
+            <label for="Mexican_Cuisine">
+                Mexican Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Mexican_Cuisine" /><br>
+            <label for="Greek_Cuisine">
+                Greek Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Greek_Cuisine" /><br>
+            <label for="Italian_Cuisine">
+                Italian Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Italian_Cuisine" /><br>
+            <label for="Indian_Cuisine">
+                Indian Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Indian_Cuisine" /><br>
+            <label for="Japanese_Cuisine">
+                Japanese Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Japanese_Cuisine" /><br>
+            <label for="Spanish_Cuisine">
+                Spanish Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Spanish_Cuisine" /><br>
+            <label for="Mediterranean_Cuisine">
+                Mediterranean Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Mediterranean_Cuisine" /><br>
+            
+            <label for="Lebanese_Cuisine">
+                Lebanese Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Lebanese_Cuisine" /><br>
+            <label for="Mediterranean_Cuisine">
+                Mediterranean Cuisine
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Mediterranean_Cuisine" />
+
+        </div>
+        <div class="diet_type">
+            <h3>Diet Type</h3>
+            <label for="Vegetarian">
+                Vegetarian
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Vegetarian" /><br>
+            <label for="Vegan_Diet">
+                Vegan
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Vegan_Diet" /><br>
+            <label for="Ketogenic_Diet">
+                Ketogenic
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Ketogenic_Diet" /><br>
+            <label for="Mediterranean_Diet">
+                Mediterranean
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="Mediterranean_Diet" /><br>
+            <label for="The_Zone_Diet">
+                The Zone
+            </label>
+            <input type="radio" class="radio" name="cuisine_catagory" id="The_Zone_Diet" /><br>
+        </div>
+
+        <div class="Select_Intolertance">
+            <h3>Intolerances</h3>
+            <label for="checkbox">
+                Dairy
+            </label>
+            <input type="checkbox" name="" id="checkbox" />
+            <label for="checkbox">
+                Eggs
+            </label>
+            <input type="checkbox" name="" id="checkbox" /><br>
+            <label for="checkbox">
+                Tree Nuts
+            </label>
+            <input type="checkbox" name="" id="checkbox" />
+            <label for="checkbox">
+                Peanuts
+            </label>
+            <input type="checkbox" name="" id="checkbox" /><br>
+            <label for="checkbox">
+                Shellfish
+            </label>
+            <input type="checkbox" name="" id="checkbox" />
+            <label for="checkbox">
+                Wheat
+            </label>
+            <input type="checkbox" name="" id="checkbox" /><br>
+            <label for="checkbox">
+                Soy
+            </label>
+            <input type="checkbox" name="" id="checkbox" /><br>
+            <div class="drink">
+                <label for="yes_no_radio">Add Drink?</label>
+                  <p>
+                  <input type="radio" name="yes_no" checked>Yes</input>
+                  
+                  <input type="radio" name="yes_no">No</input>
+                  </p>    
+        </div>
+
+        <div>
+            <button type="submit" class="btn">Search</button>
+            <button type="reset" class="btn_2">Reset</button>
+        </div>
+        </form>
+        </div>
+    </section>
+
+    <section class="recipe">
+        <div class="recipe_img">
+            <label for="text"> Recipe </label><br>
+            <input type="text" placeholder="" name="name" id="recipe" class="recipe_placeholder">
+        </div>
+        <div>
+            <button type="submit" class="btn_3">Generate Another Recipe </button>
+        </div>
+    </section>
+    <footer>
+        <h5>© 2022 - Safe Eats</h5>
+    </footer>
 </body>
+
 </html>
