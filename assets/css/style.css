@@ -1,0 +1,88 @@
+:root {
+    --primary: #0081afff;
+    --secondary: #00abe7ff;
+    --tertiary: #2dc7ffff;
+    --background1: #ead2acff;
+    --backgrounc2: #eaba6bff;
+}
+
+html {
+    background-color: var(--background1);
+}
+
+body {
+    color: var(--primary);
+    margin: 1%;
+    padding: 1%;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1 a {
+    color: var(--primary);
+}
+
+h1 a:hover {
+    color: var(--tertiary);
+}
+
+h2 {
+    font-size: 1.4em;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.border {
+    border: 2px solid var(--tertiary);
+    margin: 1%;
+    border-radius: 5px;
+}
+
+.title {
+    color: var(--primary);
+}
+
+.input {
+    margin-bottom: 3%;
+    color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.input:hover {
+    border-color: var(--primary);
+}
+
+.input:focus {
+    border-color: var(--tertiary);
+}
+
+.label {
+    color: var(--primary);
+}
+
+.select {
+    margin-bottom: 3%;
+    border-color: var(--secondary);
+}
+
+.select:hover {
+    border-color: var(--primary);
+}
+
+.select:focus {
+    border-color: var(--tertiary);
+}
+
+.option {
+    color: var(--secondary);
+}
+
+.button {
+    margin-bottom: 2%;
+}
