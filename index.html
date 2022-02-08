@@ -5,12 +5,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Bulma Styles Sheet Link-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!--Web Page Title-->
     <title>Safe Eats</title>
+
+    <!--CSS Styles Sheet Link-->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <!--Header-->
     <header>
         <div class="columns header">
             <div class="column is-full">
@@ -20,13 +27,21 @@
             </div>
         </div>
     </header>
+
+    <!--Content-->
     <main class="columns">
         <div id="search-bar" class="column is-3 border">
+
+            <!--Recipe Search-->
             <div class="search_keywords">
                 <h2>Recipe Search:</h2>
+
+                <!--Recipe Search Text Input-->
                 <input type="text" placeholder="Search Recipes" name="search" id="search" class="input">
+
             </div>
 
+            <!--Meal Type Selection - Drop Down-->
             <div id="meal_type" class="select">
                 <select>
                     <option class="option">Select Meal type</option>
@@ -47,6 +62,7 @@
                 </select>
             </div>
 
+            <!--Cuisine Selection - Drop Down -->
             <div id="cuisine" class="select">
                 <select>
                     <option class="option">Select Cuisine</option>
@@ -79,6 +95,7 @@
                 </select>
             </div>
 
+            <!--Dietary Restrictions Selection - Drop Down-->
             <div id="diet" class="select">
                 <select>
                     <option class="option">Select Diet</option>
@@ -96,7 +113,9 @@
                 </select>
             </div>
 
-            <div id="intolerances">
+
+            <!--Allergies and Food Intolerances Selection - Check Box -->
+            <div id="intolerances" class="margin">
                 <h3>Intolerances</h3>
                 <label for="Dairy" class="label">
                     <input type="checkbox" name="Dairy" value="Dairy" class="checkbox"/>
@@ -148,34 +167,57 @@
                 </label>
             </div>
 
-            <div id="drink" class="control">
+            <!--Option to include Drink-->
+            <div id="drink" class="control margin">
                 <label class="label">Add Drink?</label>
                 <input type="radio" name="yes_no"> Yes</input>
                 <input type="radio" name="yes_no" checked> No</input>
             </div>
 
-            <div>
+            <!--Search Button - Submit & Search -->
+            <div class="margin">
                 <button type="submit" class="button">Search</button>
             </div>
 
+
             <div>
-                <div id="saved_recipes">
-                    
-                </div>
+                <!--Saved Recipes Display-->
+                <div id="saved_recipes"></div>
+
+                <!--Saved Recipes Button-->
                 <button type="reset" class="button">Reset Saved Recipes</button>
             </div>
         </div>
 
+        <!--Generated Recipes Display-->
         <div class="column border">
-            <div id="recipes">
-                
+            <div id="recipes"></div>
+
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">View Recipe</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
             </div>
+
+        </div>
+
         </div>
     </main>
 
+        <!--Footer-->
         <footer>
             <h5>© 2022 - Safe Eats</h5>
         </footer>
+
+        <!--Script for JS-->
+
+        
 </body>
 
 </html>
