@@ -1,12 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!--Bulma Styles Sheet Link-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!--Web Page Title-->
+    <title>Safe Eats</title>
+
+    <!--CSS Styles Sheet Link-->
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    
+    <!--Header-->
+    <header>
+        <div class="columns header">
+            <div class="column is-full">
+                <h1 class="title is-1">
+                    <a href="/">Safe Eats</a>
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!--Content-->
+    <main class="columns">
+        <div id="search-bar" class="column is-3 border">
+
+            <!--Recipe Search-->
+            <div class="search_keywords">
+                <h2>Recipe Search:</h2>
+
+                <!--Recipe Search Text Input-->
+                <input type="text" placeholder="Search Recipes" name="search" id="search" class="input">
+
+            </div>
+
+            <!--Meal Type Selection - Drop Down-->
+            <div id="meal_type" class="select">
+                <select>
+                    <option class="option">Select Meal type</option>
+                    <option value="main_course" class="option">main course</option>
+                    <option value="side_dish" class="option">side dish</option>
+                    <option value="dessert" class="option">dessert</option>
+                    <option value="appetizer" class="option">appetizer</option>
+                    <option value="salad" class="option">salad</option>
+                    <option value="bread" class="option">bread</option>
+                    <option value="breakfast" class="option">breakfast</option>
+                    <option value="soup" class="option">soup</option>
+                    <option value="beverage" class="option">beverage</option>
+                    <option value="sauce" class="option">sauce</option>
+                    <option value="marinade" class="option">marinade</option>
+                    <option value="fingerfood" class="option">fingerfood</option>
+                    <option value="snack" class="option">snack</option>
+                    <option value="drink" class="option">drink</option>
+                </select>
+            </div>
+
+            <!--Cuisine Selection - Drop Down -->
+            <div id="cuisine" class="select">
+                <select>
+                    <option class="option">Select Cuisine</option>
+                    <option value="African" class="option">African</option>
+                    <option value="American" class="option">American</option>
+                    <option value="British" class="option">British</option>
+                    <option value="Cajun" class="option">Cajun</option>
+                    <option value="Caribbean" class="option">Caribbean</option>
+                    <option value="Chinese" class="option">Chinese</option>
+                    <option value="Eastern_European" class="option">Eastern European</option>
+                    <option value="European" class="option">European</option>
+                    <option value="French" class="option">French</option>
+                    <option value="German" class="option">German</option>
+                    <option value="Greek" class="option">Greek</option>
+                    <option value="Indian" class="option">Indian</option>
+                    <option value="Irish" class="option">Irish</option>
+                    <option value="Italian" class="option">Italian</option>
+                    <option value="Japanese" class="option">Japanese</option>
+                    <option value="Jewish" class="option">Jewish</option>
+                    <option value="Korean" class="option">Korean</option>
+                    <option value="Latin_American" class="option">Latin American</option>
+                    <option value="Mediterranean" class="option">Mediterranean</option>
+                    <option value="Mexican" class="option">Mexican</option>
+                    <option value="Middle_Eastern" class="option">Middle Eastern</option>
+                    <option value="Nordic" class="option">Nordic</option>
+                    <option value="Southern" class="option">Southern</option>
+                    <option value="Spanish" class="option">Spanish</option>
+                    <option value="Thai" class="option">Thai</option>
+                    <option value="Vietnamese" class="option">Vietnamese</option>
+                </select>
+            </div>
+
+            <!--Dietary Restrictions Selection - Drop Down-->
+            <div id="diet" class="select">
+                <select>
+                    <option class="option">Select Diet</option>
+                    <option value="Gluten_Free" class="option">Gluten Free</option>
+                    <option value="Ketogenic" class="option">Ketogenic</option>
+                    <option value="Vegetarian" class="option">Vegetarian</option>
+                    <option value="Lacto-Vegetarian" class="option">Lacto-Vegetarian</option>
+                    <option value="Ovo-Vegetarian" class="option">Ovo-Vegetarian</option>
+                    <option value="Vegan" class="option">Vegan</option>
+                    <option value="Pescetarian" class="option">Pescetarian</option>
+                    <option value="Paleo" class="option">Paleo</option>
+                    <option value="Primal" class="option">Primal</option>
+                    <option value="Low_FODMAP" class="option">Low FODMAP</option>
+                    <option value="Whole30" class="option">Whole30</option>
+                </select>
+            </div>
+
+
+            <!--Allergies and Food Intolerances Selection - Check Box -->
+            <div id="intolerances" class="margin">
+                <h3>Intolerances</h3>
+                <label for="Dairy" class="label">
+                    <input type="checkbox" name="Dairy" value="Dairy" class="checkbox"/>
+                    Dairy
+                </label>
+                <label for="Egg" class="label">
+                    <input type="checkbox" name="Egg" value="Egg" class="checkbox" />
+                    Egg
+                </label>
+                <label for="Gluten" class="label">
+                    <input type="checkbox" name="Gluten" value="Gluten" class="checkbox" />
+                    Gluten
+                </label>
+                <label for="Grain" class="label">
+                    <input type="checkbox" name="Grain" value="Grain" class="checkbox" />
+                    Grain
+                </label>
+                <label for="Peanut" class="label">
+                    <input type="checkbox" name="Peanut" value="Peanut" class="checkbox" />
+                    Peanut
+                </label>
+                <label for="Seafood" class="label">
+                    <input type="checkbox" name="Seafood" value="Seafood" class="checkbox" />
+                    Seafood
+                </label>
+                <label for="Sesame" class="label">
+                    <input type="checkbox" name="Sesame" value="Sesame" class="checkbox" />
+                    Sesame
+                </label>
+                <label for="Shellfish" class="label">
+                    <input type="checkbox" name="Shellfish" value="Shellfish" class="checkbox" />
+                    Shellfish
+                </label>
+                <label for="Soy" class="label">
+                    <input type="checkbox" name="Soy" value="Soy" class="checkbox" />
+                    Soy
+                </label>
+                <label for="Sulfite" class="label">
+                    <input type="checkbox" name="Sulfite" value="Sulfite" class="checkbox" />
+                    Sulfite
+                </label>
+                <label for="Tree_Nut" class="label">
+                    <input type="checkbox" name="Tree_Nut" value="Tree_Nut" class="checkbox" />
+                    Tree Nut
+                </label>
+                <label for="Wheat" class="label">
+                    <input type="checkbox" name="Wheat" value="Wheat" class="checkbox" />
+                    Wheat
+                </label>
+            </div>
+
+            <!--Option to include Drink-->
+            <div id="drink" class="control margin">
+                <label class="label">Add Drink?</label>
+                <input type="radio" name="yes_no"> Yes</input>
+                <input type="radio" name="yes_no" checked> No</input>
+            </div>
+
+            <!--Search Button - Submit & Search -->
+            <div class="margin">
+                <button type="submit" class="button">Search</button>
+            </div>
+
+
+            <div>
+                <!--Saved Recipes Display-->
+                <div id="saved_recipes"></div>
+
+                <!--Saved Recipes Button-->
+                <button type="reset" class="button">Reset Saved Recipes</button>
+            </div>
+        </div>
+
+        <!--Generated Recipes Display-->
+        <div class="column border">
+            <div id="recipes"></div>
+
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn">View Recipe</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+
+        </div>
+
+        </div>
+    </main>
+
+        <!--Footer-->
+        <footer>
+            <h5>© 2022 - Safe Eats</h5>
+        </footer>
+
+        <!--Script for JS-->
+
+        
 </body>
+
 </html>
