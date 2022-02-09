@@ -1,41 +1,41 @@
 //add const for search, diet, intolerances, cusine, rdm drink, 
 
-const randomMeal = document.getElementById('Random Meal'),
-diet = document.getElementById('Diet')
-alergy = document.getElementById(' Food Intolerences')
-submit = document.getElementById('submit'),
-randomDrink = document.getElementById('Drink?'),
-recipeEl = document.getElementById('Recipe'),
-resultHeading = document.getElementById('result-heading');
+//const randomMeal = document.getElementById('Random Meal'),
+//diet = document.getElementById('Diet'),
+//alergy = document.getElementById(' Food Intolerences'),
+//submit = document.getElementById('submit'),
+//randomDrink = document.getElementById('Drink?'),
+//recipeEl = document.getElementById('Recipe'),
+//esultHeading = document.getElementById('result-heading');
 
 //API fetch request
-
 fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
 .then(function(response){
 return response.json();
 })
-fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php?s=drink') 
+fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
     .then(function(response){
   return response.json(); 
 })
 
 .then(function(comments){
 
+
   //console the comments with a four loop 
   for (var i = 0; i < comments.length; i++){
     console.log(comments[i]);
-  }
-})
+  }}
 
-const getRecipeTitleAndImage = async function (event) {
-    event.preventDefault();
-    removeAllChildNodes(recipeFoodListEl)
-    const cuisine = getCuisine();
-    const diet = getLifestyle();
-    const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&cuisine=${cuisine}&diet=${diet}`
-    const response = await fetch(url);
-    const data = await response.json();
-    makeCard(data, recipeFoodListEl)
+
+const getRecipeTitleAndImage = async (event) => {
+  event.preventDefault();
+  removeAllChildNodes(recipeFoodListEl);
+  const cuisine = getCuisine();
+  const diet = getLifestyle();
+  const url = 'https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c';
+  const response = await fetch(url);
+  const data = await response.json();
+  makeCard(data, recipeFoodListEl);
 }
 
 function getCuisine () {
@@ -63,29 +63,65 @@ function getAlergy () {
     return lifeStyle;
 }
 
-
-
-
-// one function (all below)
-// add button for query imput
-// add cusine btn
-//diet btn
-//alergy btn
-
-// add drink (random gererator)
-//search btn 
-
-
-
-//if else for random drink 
-//call for random drink api 
-if (randomDrink) {
-
-} else {
-
+async function getIngredient (id) {
+  const ingredientArray = [];
+  const response = await fetch(`https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c`);
+  const data = await response.json();
+  console.log(data)
+  for (let i = 0; i < data.ingredients.length; i++){
+      const ingredientName = await data.ingredients[i].name;
+      const measurement = await data.ingredients[i].amount.us.value + " " + data.ingredients[1].amount.us.unit;
+      const ingredientMeasurement = await ingredientName + ": " + measurement;
+      ingredientArray.push(ingredientMeasurement);
+  }
+  return ingredientArray;
 }
+//make a card for recipe
+async function makeCard (data, _attachingEl) {
+  for (let i = 0; i < data.results.length; i++){
+  }
+  }
 
+     // Create article element
+     const articleEl = document.createElement("article");
+     articleEl.className = "message";
+     // Create header Element, Content, and Append
+     const headerEl = document.createElement("div"); 
+     headerEl.classList.add("message-header", "has-background-black");
+     const recipeName = document.createElement("p");
+     recipeName.textContent = data.results[i].title;
+     headerEl.appendChild(recipeName);
+     articleEl.appendChild(headerEl);
+     // Create body Element, Content, and Append
+         // Create and display image
+     const messageBodyEl = document.createElement("div");
+     messageBodyEl.className = "message-body";
+     const imageEl = document.createElement("div");
+     imageEl.className = "level-item";
+     const image = document.createElement("img");
+     image.setAttribute("src", data.results[i].image);
+     imageEl.appendChild(image);
+     messageBodyEl.appendChild(imageEl);
+     articleEl.appendChild(messageBodyEl);
+         // Create and display ingredients
+     const ingredientsEl = document.createElement("div");
+     const ingredientTitle = document.createElement("h2");
+     ingredientTitle.classList.add("is-size-5", "is-underlined", "level-item", "mt-4", "mb-2");
+     ingredientTitle.textContent = "Ingredients";
+     ingredientsEl.appendChild(ingredientTitle);
+     const recipeId = data.results[i].id
 
+     const ingredients = await getIngredient(recipeId);
+     console.log(ingredients.length);
+     for (let i = 0; i < ingredients.length; i ++) {
+         const ingredient = document.createElement("p");
+         ingredient.className = "level-item";
+         ingredient.textContent = ingredients[i]
+         ingredientsEl.append(ingredient);
+     }
+     messageBodyEl.appendChild(ingredientsEl);
+         
+     
 // add previous meals to dom / local storage 
 function addMealToDOM(meal) {
     const ingredients = [];
@@ -95,7 +131,7 @@ function addMealToDOM(meal) {
         ingredients.push(
           `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
         );
-
+        }
 
 
 // local storage 
@@ -131,20 +167,25 @@ function saveFunc(index) {
     });
   }
   saveFunc(i);
-})
+}
 
 // Get the modal
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0]; 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-span.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+      newFunction();
+  function newFunction() {
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
   }
-}
+
+    }
