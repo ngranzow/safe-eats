@@ -14,6 +14,8 @@
 
     <!--CSS Styles Sheet Link-->
     <link rel="stylesheet" href="./assets/css/style.css">
+
+   
 </head>
 
 <body>
@@ -30,7 +32,7 @@
 
     <!--Content-->
     <main class="columns">
-        <div id="search-bar" class="column is-3 border">
+        <form  id="search-form" class="column is-3 border form">
 
             <!--Recipe Search-->
             <div class="search_keywords">
@@ -170,14 +172,14 @@
             <!--Option to include Drink-->
             <div id="drink" class="control margin">
                 <label class="label">Add Drink?</label>
-                <input type="radio" name="yes_no"> Yes</input>
-                <input type="radio" name="yes_no" checked> No</input>
+                <input type="radio" name="yes_no" value="yes" id="yes"> Yes</input>
+                <input type="radio" name="yes_no" value="no" checked> No</input>
             </div>
 
             <!--Search Button - Submit & Search -->
-            <div class="margin">
-                <button type="submit" class="button">Search</button>
-            </div>
+            <!--div class="margin"-->
+                <button  id = "search" type="submit" class="button">Search</button>
+            <!--/div-->
 
 
             <div>
@@ -185,9 +187,9 @@
                 <div id="saved_recipes"></div>
 
                 <!--Saved Recipes Button-->
-                <button type="reset" class="button">Reset Saved Recipes</button>
+                <button type="reset" class="button" id="reset-btn">Reset Saved Recipes</button>
             </div>
-        </div>
+        </form>
 
         <!--Generated Recipes Display-->
         <div class="column border">
@@ -216,10 +218,9 @@
         </footer>
 
         <!--Script for JS-->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="./assets/script.js"></script>
-        <script src="./assets/modal.js"></script>
 
-        
 </body>
 
 </html>
