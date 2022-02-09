@@ -1,32 +1,33 @@
 //add const for search, diet, intolerances, cusine, rdm drink, 
 
-//const randomMeal = document.getElementById('Random Meal'),
-//diet = document.getElementById('Diet'),
-//alergy = document.getElementById(' Food Intolerences'),
-//submit = document.getElementById('submit'),
-//randomDrink = document.getElementById('Drink?'),
-//recipeEl = document.getElementById('Recipe'),
-//esultHeading = document.getElementById('result-heading');
+const randomMeal = document.getElementById('Random Meal'),
+diet = document.getElementById('Diet'),
+alergy = document.getElementById(' Food Intolerences'),
+submit = document.getElementById('submit'),
+randomDrink = document.getElementById('Drink?'),
+recipeEl = document.getElementById('Recipe'),
+resultHeading = document.getElementById('result-heading');
 
-//API fetch request
+//API fetch request - Spoontacular
 fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
 .then(function(response){
-return response.json();
+  return response.json();
 })
-fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
-    .then(function(response){
+
+//API fetch request - Cocktail
+fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php')
+.then(function(response){
   return response.json(); 
 })
 
 .then(function(comments){
-
-
   //console the comments with a four loop 
   for (var i = 0; i < comments.length; i++){
     console.log(comments[i]);
-  }}
+  }
+});
 
-
+//const getRecipeTitleAndImage - define makeCard function 
 const getRecipeTitleAndImage = async (event) => {
   event.preventDefault();
   removeAllChildNodes(recipeFoodListEl);
@@ -38,9 +39,10 @@ const getRecipeTitleAndImage = async (event) => {
   makeCard(data, recipeFoodListEl);
 }
 
+//getCuisine function - define cuisine
 function getCuisine () {
 const foodItems = [];
-const checkedItems = document.getElementsByClassName("cusine");
+const checkedItems = document.getElementsByClassName("cuisine");
 for (let i = 0; i < checkedItems.length; i++){
     if (checkedItems[i].checked === true) {
         foodItems.push(checkedItems[i].value);
@@ -51,6 +53,7 @@ return foodChoice;
 
 }
 
+//getAllergy function - define allergy criteria
 function getAlergy () {
     let lifeStyleItems = [];
     let checkedItems = document.getElementsByClassName("Food Intolerances");
@@ -63,6 +66,7 @@ function getAlergy () {
     return lifeStyle;
 }
 
+//start getIngredient function - 
 async function getIngredient (id) {
   const ingredientArray = [];
   const response = await fetch(`https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c`);
@@ -76,15 +80,17 @@ async function getIngredient (id) {
   }
   return ingredientArray;
 }
-//make a card for recipe
+
+//start makeCard function - make a card for recipe
 async function makeCard (data, _attachingEl) {
   for (let i = 0; i < data.results.length; i++){
   }
-  }
+}
 
      // Create article element
      const articleEl = document.createElement("article");
      articleEl.className = "message";
+
      // Create header Element, Content, and Append
      const headerEl = document.createElement("div"); 
      headerEl.classList.add("message-header", "has-background-black");
@@ -92,6 +98,7 @@ async function makeCard (data, _attachingEl) {
      recipeName.textContent = data.results[i].title;
      headerEl.appendChild(recipeName);
      articleEl.appendChild(headerEl);
+
      // Create body Element, Content, and Append
          // Create and display image
      const messageBodyEl = document.createElement("div");
@@ -103,6 +110,7 @@ async function makeCard (data, _attachingEl) {
      imageEl.appendChild(image);
      messageBodyEl.appendChild(imageEl);
      articleEl.appendChild(messageBodyEl);
+
          // Create and display ingredients
      const ingredientsEl = document.createElement("div");
      const ingredientTitle = document.createElement("h2");
