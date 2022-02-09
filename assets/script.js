@@ -70,6 +70,19 @@ const getRecipeTitleAndImage = async (event) => {
   makeCard(data, recipeFoodListEl);
 }
 
+function getCuisine() {
+  const foodItems = [];
+  const checkedItems = document.getElementsByClassName("cusine");
+  for (let i = 0; i < checkedItems.length; i++) {
+    if (checkedItems[i].checked === true) {
+      foodItems.push(checkedItems[i].value);
+    }
+  }
+  const foodChoice = foodItems.join(",");
+  return foodChoice;
+
+}
+
 function getAlergy() {
   let lifeStyleItems = [];
   let checkedItems = document.getElementsByClassName("intolerances");
@@ -141,57 +154,57 @@ const recipeId = data.results[i].id
 //   ingredientsEl.append(ingredient);
 // }
 messageBodyEl.appendChild(ingredientsEl);
-         
-     
+
+
 // add previous meals to dom / local storage 
 function addMealToDOM(meal) {
-    const ingredients = [];
-  
-    for (let i = 1; i <= 20; i++) {
-      if (meal[`strIngredient${i}`]) {
-        ingredients.push(
-          `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-        );
+  const ingredients = [];
+
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingredients.push(
+        `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+      );
+    }
+
+
+    // local storage 
+
+    function saveFunc(index) {
+      btnBox.click(function () {
+
+        var task = $(".description-" + index).val(); //get the value of the textarea
+
+        if (index === 1) {
+          console.log(task);
+          localStorage.setItem("task1", task)
+
+        } else if (index === 2) {
+          console.log(task);
+          localStorage.setItem("task2", task)
+        } else if (index === 3) {
+          localStorage.setItem("task3", task)
+        } else if (index === 4) {
+          localStorage.setItem("task4", task)
+        } else if (index === 5) {
+          localStorage.setItem("task5", task)
+        } else if (index === 6) {
+          localStorage.setItem("task6", task)
+        } else if (index === 7) {
+          localStorage.setItem("task7", task)
+        } else if (index === 8) {
+          localStorage.setItem("task8", task)
+        } else if (index === 9) {
+          localStorage.setItem("task9", task)
         }
 
-
-// local storage 
-
-function saveFunc(index) {
-    btnBox.click(function() {
-
-      var task = $(".description-" + index).val(); //get the value of the textarea
-
-      if(index === 1){
-      console.log(task);        
-      localStorage.setItem("task1", task)
-
-      } else if (index === 2) {
-        console.log(task);
-        localStorage.setItem("task2", task)        
-      }  else if (index === 3) {
-        localStorage.setItem("task3", task)
-      }  else if (index === 4) {
-        localStorage.setItem("task4", task)
-      }  else if (index === 5) {
-        localStorage.setItem("task5", task)
-      }  else if (index === 6) {
-        localStorage.setItem("task6", task)
-      }  else if (index === 7) {
-        localStorage.setItem("task7", task)
-      }  else if (index === 8) {
-        localStorage.setItem("task8", task)
-      }  else if (index === 9) {
-        localStorage.setItem("task9", task)
-      } 
-
-    });
+      });
+    }
+    saveFunc(i);
   }
-  saveFunc(i);
-}
 
-// Get the modal
-      newFunction();
+  // Get the modal
+  newFunction();
   function newFunction() {
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("myBtn");
@@ -208,6 +221,7 @@ function saveFunc(index) {
       }
     };
   }
+
 }
 function randomDrink() {
   var searchBtn = document.getElementById("search-btn");
@@ -255,7 +269,8 @@ function randomDrink() {
           $("#ingredient-table").append(columns);
         })
     }
-
+  });
+}
 
 randomDrink();
 
