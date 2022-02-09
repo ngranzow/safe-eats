@@ -7,25 +7,46 @@
 //randomDrink = document.getElementById('Drink?'),
 //recipeEl = document.getElementById('Recipe'),
 //esultHeading = document.getElementById('result-heading');
+console.log("blah")
+const searchForm = document.getElementById("search-form")
+const searchImput = document.getElementById("search")
+
+function handleSearchForm(event) {
+  event.preventDefault()
+  var Recipe = searchImput.value.trim()
+  console.log('click')
+  console.log(Recipe)
+
+}
+var pasta ="pasta"
 
 //API fetch request
-fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
-.then(function(response){
-return response.json();
-})
-fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
-    .then(function(response){
-  return response.json(); 
-})
+fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data)
+  })
+  .catch(function (err) {
+    console.error(err)
+  })
 
-.then(function(comments){
+fetch('www.thecocktaildb.com/api/json/v1/1/random.php')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data)
 
-
-  //console the comments with a four loop 
-  for (var i = 0; i < comments.length; i++){
-    console.log(comments[i]);
-  }}
-
+    //console the comments with a four loop 
+    //for (var i = 0; i < comments.length; i++){
+    //console.log(comments[i]);
+    //}
+  })
+  .catch(function (err) {
+    console.error(err)
+  })
 
 const getRecipeTitleAndImage = async (event) => {
   event.preventDefault();
@@ -38,139 +59,139 @@ const getRecipeTitleAndImage = async (event) => {
   makeCard(data, recipeFoodListEl);
 }
 
-function getCuisine () {
-const foodItems = [];
-const checkedItems = document.getElementsByClassName("cusine");
-for (let i = 0; i < checkedItems.length; i++){
+function getCuisine() {
+  const foodItems = [];
+  const checkedItems = document.getElementsByClassName("cusine");
+  for (let i = 0; i < checkedItems.length; i++) {
     if (checkedItems[i].checked === true) {
-        foodItems.push(checkedItems[i].value);
+      foodItems.push(checkedItems[i].value);
     }
-}
-const foodChoice = foodItems.join(",");
-return foodChoice;
+  }
+  const foodChoice = foodItems.join(",");
+  return foodChoice;
 
 }
 
-function getAlergy () {
-    let lifeStyleItems = [];
-    let checkedItems = document.getElementsByClassName("Food Intolerances");
-    for (let i = 0; i < checkedItems.length; i++) {
-        if (checkedItems[i].checked === true) {
-            lifeStyleItems.push(checkedItems[i].value);
-        }
+function getAlergy() {
+  let lifeStyleItems = [];
+  let checkedItems = document.getElementsByClassName("intolerances");
+  for (let i = 0; i < checkedItems.length; i++) {
+    if (checkedItems[i].checked === true) {
+      lifeStyleItems.push(checkedItems[i].value);
     }
-    const lifeStyle = lifeStyleItems.join(",");
-    return lifeStyle;
+  }
+  const lifeStyle = lifeStyleItems.join(",");
+  return lifeStyle;
 }
 
-async function getIngredient (id) {
+async function getIngredient(id) {
   const ingredientArray = [];
   const response = await fetch(`https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c`);
   const data = await response.json();
   console.log(data)
-  for (let i = 0; i < data.ingredients.length; i++){
-      const ingredientName = await data.ingredients[i].name;
-      const measurement = await data.ingredients[i].amount.us.value + " " + data.ingredients[1].amount.us.unit;
-      const ingredientMeasurement = await ingredientName + ": " + measurement;
-      ingredientArray.push(ingredientMeasurement);
+  for (let i = 0; i < data.ingredients.length; i++) {
+    const ingredientName = await data.ingredients[i].name;
+    const measurement = await data.ingredients[i].amount.us.value + " " + data.ingredients[1].amount.us.unit;
+    const ingredientMeasurement = await ingredientName + ": " + measurement;
+    ingredientArray.push(ingredientMeasurement);
   }
   return ingredientArray;
 }
 //make a card for recipe
-async function makeCard (data, _attachingEl) {
-  for (let i = 0; i < data.results.length; i++){
+async function makeCard(data, _attachingEl) {
+  for (let i = 0; i < data.results.length; i++) {
   }
-  }
-
-     // Create article element
-     const articleEl = document.createElement("article");
-     articleEl.className = "message";
-     // Create header Element, Content, and Append
-     const headerEl = document.createElement("div"); 
-     headerEl.classList.add("message-header", "has-background-black");
-     const recipeName = document.createElement("p");
-     recipeName.textContent = data.results[i].title;
-     headerEl.appendChild(recipeName);
-     articleEl.appendChild(headerEl);
-     // Create body Element, Content, and Append
-         // Create and display image
-     const messageBodyEl = document.createElement("div");
-     messageBodyEl.className = "message-body";
-     const imageEl = document.createElement("div");
-     imageEl.className = "level-item";
-     const image = document.createElement("img");
-     image.setAttribute("src", data.results[i].image);
-     imageEl.appendChild(image);
-     messageBodyEl.appendChild(imageEl);
-     articleEl.appendChild(messageBodyEl);
-         // Create and display ingredients
-     const ingredientsEl = document.createElement("div");
-     const ingredientTitle = document.createElement("h2");
-     ingredientTitle.classList.add("is-size-5", "is-underlined", "level-item", "mt-4", "mb-2");
-     ingredientTitle.textContent = "Ingredients";
-     ingredientsEl.appendChild(ingredientTitle);
-     const recipeId = data.results[i].id
-
-     const ingredients = await getIngredient(recipeId);
-     console.log(ingredients.length);
-     for (let i = 0; i < ingredients.length; i ++) {
-         const ingredient = document.createElement("p");
-         ingredient.className = "level-item";
-         ingredient.textContent = ingredients[i]
-         ingredientsEl.append(ingredient);
-     }
-     messageBodyEl.appendChild(ingredientsEl);
-         
-     
-// add previous meals to dom / local storage 
-function addMealToDOM(meal) {
-    const ingredients = [];
-  
-    for (let i = 1; i <= 20; i++) {
-      if (meal[`strIngredient${i}`]) {
-        ingredients.push(
-          `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-        );
-        }
-
-
-// local storage 
-
-function saveFunc(index) {
-    btnBox.click(function() {
-
-      var task = $(".description-" + index).val(); //get the value of the textarea
-
-      if(index === 1){
-      console.log(task);        
-      localStorage.setItem("task1", task)
-
-      } else if (index === 2) {
-        console.log(task);
-        localStorage.setItem("task2", task)        
-      }  else if (index === 3) {
-        localStorage.setItem("task3", task)
-      }  else if (index === 4) {
-        localStorage.setItem("task4", task)
-      }  else if (index === 5) {
-        localStorage.setItem("task5", task)
-      }  else if (index === 6) {
-        localStorage.setItem("task6", task)
-      }  else if (index === 7) {
-        localStorage.setItem("task7", task)
-      }  else if (index === 8) {
-        localStorage.setItem("task8", task)
-      }  else if (index === 9) {
-        localStorage.setItem("task9", task)
-      } 
-
-    });
-  }
-  saveFunc(i);
 }
 
-// Get the modal
-      newFunction();
+// Create article element
+const articleEl = document.createElement("article");
+articleEl.className = "message";
+// Create header Element, Content, and Append
+const headerEl = document.createElement("div");
+headerEl.classList.add("message-header", "has-background-black");
+const recipeName = document.createElement("p");
+recipeName.textContent = data.results[i].title;
+headerEl.appendChild(recipeName);
+articleEl.appendChild(headerEl);
+// Create body Element, Content, and Append
+// Create and display image
+const messageBodyEl = document.createElement("div");
+messageBodyEl.className = "message-body";
+const imageEl = document.createElement("div");
+imageEl.className = "level-item";
+const image = document.createElement("img");
+image.setAttribute("src", data.results[i].image);
+imageEl.appendChild(image);
+messageBodyEl.appendChild(imageEl);
+articleEl.appendChild(messageBodyEl);
+// Create and display ingredients
+const ingredientsEl = document.createElement("div");
+const ingredientTitle = document.createElement("h2");
+ingredientTitle.classList.add("is-size-5", "is-underlined", "level-item", "mt-4", "mb-2");
+ingredientTitle.textContent = "Ingredients";
+ingredientsEl.appendChild(ingredientTitle);
+const recipeId = data.results[i].id
+
+//const ingredients = await getIngredient(recipeId);
+//console.log(ingredients.length);
+//for (let i = 0; i < ingredients.length; i++) {
+  //const ingredient = document.createElement("p");
+  //ingredient.className = "level-item";
+  //ingredient.textContent = ingredients[i]
+  //ingredientsEl.append(ingredient);
+//}
+messageBodyEl.appendChild(ingredientsEl);
+
+
+// add previous meals to dom / local storage 
+function addMealToDOM(meal) {
+  const ingredients = [];
+
+  for (let i = 1; i <= 20; i++) {
+    if (meal[`strIngredient${i}`]) {
+      ingredients.push(
+        `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
+      );
+    }
+
+
+    // local storage 
+
+    function saveFunc(index) {
+      btnBox.click(function () {
+
+        var task = $(".description-" + index).val(); //get the value of the textarea
+
+        if (index === 1) {
+          console.log(task);
+          localStorage.setItem("task1", task)
+
+        } else if (index === 2) {
+          console.log(task);
+          localStorage.setItem("task2", task)
+        } else if (index === 3) {
+          localStorage.setItem("task3", task)
+        } else if (index === 4) {
+          localStorage.setItem("task4", task)
+        } else if (index === 5) {
+          localStorage.setItem("task5", task)
+        } else if (index === 6) {
+          localStorage.setItem("task6", task)
+        } else if (index === 7) {
+          localStorage.setItem("task7", task)
+        } else if (index === 8) {
+          localStorage.setItem("task8", task)
+        } else if (index === 9) {
+          localStorage.setItem("task9", task)
+        }
+
+      });
+    }
+    saveFunc(i);
+  }
+
+  // Get the modal
+  newFunction();
   function newFunction() {
     var modal = document.getElementById("myModal");
     var btn = document.getElementById("myBtn");
@@ -188,4 +209,5 @@ function saveFunc(index) {
     };
   }
 
-    }
+}
+searchForm.addEventListener("submit", handleSearchForm)
