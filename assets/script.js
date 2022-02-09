@@ -112,10 +112,7 @@ async function getIngredient(id) {
 //make a card for recipe
 async function makeCard(data, _attachingEl) {
   for (let i = 0; i < data.results.length; i++) {
-  }
-}
-
-// Create article element
+    // Create article element
 const articleEl = document.createElement("article");
 articleEl.className = "message";
 // Create header Element, Content, and Append
@@ -123,7 +120,7 @@ const headerEl = document.createElement("div");
 headerEl.classList.add("message-header", "has-background-black");
 const recipeName = document.createElement("p");
 recipeName.textContent = data.results[i].title;
-console.log(data);
+console.log(recipeName);
 headerEl.appendChild(recipeName);
 articleEl.appendChild(headerEl);
 // Create body Element, Content, and Append
@@ -154,6 +151,10 @@ const recipeId = data.results[i].id
 //   ingredientsEl.append(ingredient);
 // }
 messageBodyEl.appendChild(ingredientsEl);
+  }
+}
+
+
 
 
 // add previous meals to dom / local storage 
@@ -243,11 +244,11 @@ function randomDrink() {
           var drinkMeasureArray = [drinkData.drinks[0].strMeasure1, drinkData.drinks[0].strMeasure2, drinkData.drinks[0].strMeasure3, drinkData.drinks[0].strMeasure4, drinkData.drinks[0].strMeasure5, drinkData.drinks[0].strMeasure6, drinkData.drinks[0].strMeasure7, drinkData.drinks[0].strMeasure8, drinkData.drinks[0].strMeasure9, drinkData.drinks[0].strMeasure10, drinkData.drinks[0].strMeasure11, drinkData.drinks[0].strMeasure12, drinkData.drinks[0].strMeasure13, drinkData.drinks[0].strMeasure14, drinkData.drinks[0].strMeasure15];
           var noNullIngredients = drinkIngredientArray.filter(x => x !== null);
           var returnIngredients = noNullIngredients.join(", ");
-          console.log(noNullIngredients);
-          console.log(returnIngredients);
+          // console.log(noNullIngredients);
+          // console.log(returnIngredients);
           var noNullMeasure = drinkMeasureArray.filter(x => x !== null);
           var returnMeasure = noNullMeasure.join(", ")
-          console.log(returnMeasure);
+          // console.log(returnMeasure);
 
           recipesEl.innerHTML = ("<div class='card'<div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div></div>");
 
@@ -275,4 +276,4 @@ function randomDrink() {
 randomDrink();
 
 
-searchForm.addEventListener("submit", handleSearchForm)
+// searchForm.addEventListener("submit", handleSearchForm)
