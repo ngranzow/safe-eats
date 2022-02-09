@@ -76,6 +76,56 @@ async function getIngredient (id) {
   }
   return ingredientArray;
 }
+
+function randomDrink() {
+  var searchBtn = document.getElementById("search-btn");
+  searchBtn.addEventListener("click", function() {
+      var yesRadio = document.getElementById("yes").checked;
+
+      if (yesRadio) {
+          var drinkApi = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+          fetch(drinkApi)
+          .then(function (drinkResponse) {
+              return drinkResponse.json();
+          })
+          .then(function (drinkData) {
+              var recipesEl = document.getElementById("recipes");
+              var drinkImage = drinkData.drinks[0].strDrinkThumb + "/preview";
+              var drinkName = drinkData.drinks[0].strDrink;
+              var drinkInstructions = drinkData.drinks[0].strInstructions;
+              var drinkIngredientArray = [drinkData.drinks[0].strIngredient1, drinkData.drinks[0].strIngredient2, drinkData.drinks[0].strIngredient3, drinkData.drinks[0].strIngredient4, drinkData.drinks[0].strIngredient5, drinkData.drinks[0].strIngredient6, drinkData.drinks[0].strIngredient7, drinkData.drinks[0].strIngredient8, drinkData.drinks[0].strIngredient9, drinkData.drinks[0].strIngredient10, drinkData.drinks[0].strIngredient11, drinkData.drinks[0].strIngredient12, drinkData.drinks[0].strIngredient13, drinkData.drinks[0].strIngredient14, drinkData.drinks[0].strIngredient15];
+              var drinkMeasureArray = [drinkData.drinks[0].strMeasure1, drinkData.drinks[0].strMeasure2, drinkData.drinks[0].strMeasure3, drinkData.drinks[0].strMeasure4, drinkData.drinks[0].strMeasure5, drinkData.drinks[0].strMeasure6, drinkData.drinks[0].strMeasure7, drinkData.drinks[0].strMeasure8, drinkData.drinks[0].strMeasure9, drinkData.drinks[0].strMeasure10, drinkData.drinks[0].strMeasure11, drinkData.drinks[0].strMeasure12, drinkData.drinks[0].strMeasure13, drinkData.drinks[0].strMeasure14, drinkData.drinks[0].strMeasure15];
+              var noNullIngredients = drinkIngredientArray.filter(x => x !== null);
+              var returnIngredients = noNullIngredients.join(", ");
+              console.log(noNullIngredients);
+              console.log(returnIngredients);
+              var noNullMeasure = drinkMeasureArray.filter(x => x !== null);
+              var returnMeasure = noNullMeasure.join(", ")
+              console.log(returnMeasure);
+
+              recipesEl.innerHTML = ("<div class='card'<div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div></div>");
+
+              var maxSize = Math.max(noNullIngredients.length, noNullMeasure.length);
+              var arrays = [];
+              for (var i = 0; i < maxSize; i++) {
+                  arrays[i] = [
+                      noNullIngredients[i] || "",
+                      noNullMeasure[i] || ""
+                  ];
+              }
+
+              var columns = arrays.map(p => {
+                  var row = $("<tr>");
+                  p.forEach(v => row.append($("<td>").html(v)));
+                  return row;
+              })
+
+              $("#ingredient-table").append(columns);
+          })
+      }
+  });
+}
+
 //make a card for recipe
 async function makeCard (data, _attachingEl) {
   for (let i = 0; i < data.results.length; i++){
@@ -190,53 +240,6 @@ function saveFunc(index) {
 
     }
 
-    function randomDrink() {
-      var searchBtn = document.getElementById("search-btn");
-      searchBtn.addEventListener("click", function() {
-          var yesRadio = document.getElementById("yes").checked;
-  
-          if (yesRadio) {
-              var drinkApi = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
-              fetch(drinkApi)
-              .then(function (drinkResponse) {
-                  return drinkResponse.json();
-              })
-              .then(function (drinkData) {
-                  var recipesEl = document.getElementById("recipes");
-                  var drinkImage = drinkData.drinks[0].strDrinkThumb + "/preview";
-                  var drinkName = drinkData.drinks[0].strDrink;
-                  var drinkInstructions = drinkData.drinks[0].strInstructions;
-                  var drinkIngredientArray = [drinkData.drinks[0].strIngredient1, drinkData.drinks[0].strIngredient2, drinkData.drinks[0].strIngredient3, drinkData.drinks[0].strIngredient4, drinkData.drinks[0].strIngredient5, drinkData.drinks[0].strIngredient6, drinkData.drinks[0].strIngredient7, drinkData.drinks[0].strIngredient8, drinkData.drinks[0].strIngredient9, drinkData.drinks[0].strIngredient10, drinkData.drinks[0].strIngredient11, drinkData.drinks[0].strIngredient12, drinkData.drinks[0].strIngredient13, drinkData.drinks[0].strIngredient14, drinkData.drinks[0].strIngredient15];
-                  var drinkMeasureArray = [drinkData.drinks[0].strMeasure1, drinkData.drinks[0].strMeasure2, drinkData.drinks[0].strMeasure3, drinkData.drinks[0].strMeasure4, drinkData.drinks[0].strMeasure5, drinkData.drinks[0].strMeasure6, drinkData.drinks[0].strMeasure7, drinkData.drinks[0].strMeasure8, drinkData.drinks[0].strMeasure9, drinkData.drinks[0].strMeasure10, drinkData.drinks[0].strMeasure11, drinkData.drinks[0].strMeasure12, drinkData.drinks[0].strMeasure13, drinkData.drinks[0].strMeasure14, drinkData.drinks[0].strMeasure15];
-                  var noNullIngredients = drinkIngredientArray.filter(x => x !== null);
-                  var returnIngredients = noNullIngredients.join(", ");
-                  console.log(noNullIngredients);
-                  console.log(returnIngredients);
-                  var noNullMeasure = drinkMeasureArray.filter(x => x !== null);
-                  var returnMeasure = noNullMeasure.join(", ")
-                  console.log(returnMeasure);
-  
-                  recipesEl.innerHTML = ("<div class='card'<div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div></div>");
-  
-                  var maxSize = Math.max(noNullIngredients.length, noNullMeasure.length);
-                  var arrays = [];
-                  for (var i = 0; i < maxSize; i++) {
-                      arrays[i] = [
-                          noNullIngredients[i] || "",
-                          noNullMeasure[i] || ""
-                      ];
-                  }
-  
-                  var columns = arrays.map(p => {
-                      var row = $("<tr>");
-                      p.forEach(v => row.append($("<td>").html(v)));
-                      return row;
-                  })
-  
-                  $("#ingredient-table").append(columns);
-              })
-          }
-      });
-  }
+    
   
 
