@@ -11,14 +11,23 @@ console.log("blah")
 const searchForm = document.getElementById("search-form")
 const searchImput = document.getElementById("search")
 
-function handleSearchForm(event) {
-  event.preventDefault()
-  var Recipe = searchImput.value.trim()
-  console.log('click')
-  console.log(Recipe)
+//API fetch request
+// fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
+// .then(function(response){
+// return response.json();
+// })
+// fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
+//     .then(function(response){
+//   return response.json(); 
+// })
 
-}
-var pasta ="pasta"
+// .then(function(comments){
+
+
+//   //console the comments with a four loop 
+//   for (var i = 0; i < comments.length; i++){
+//     console.log(comments[i]);
+//   }}
 
 //API fetch request
 fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
@@ -97,6 +106,7 @@ async function getIngredient(id) {
   }
   return ingredientArray;
 }
+
 //make a card for recipe
 async function makeCard(data, _attachingEl) {
   for (let i = 0; i < data.results.length; i++) {
@@ -132,14 +142,14 @@ ingredientTitle.textContent = "Ingredients";
 ingredientsEl.appendChild(ingredientTitle);
 const recipeId = data.results[i].id
 
-//const ingredients = await getIngredient(recipeId);
-//console.log(ingredients.length);
-//for (let i = 0; i < ingredients.length; i++) {
-  //const ingredient = document.createElement("p");
-  //ingredient.className = "level-item";
-  //ingredient.textContent = ingredients[i]
-  //ingredientsEl.append(ingredient);
-//}
+const ingredients = await getIngredient(recipeId);
+console.log(ingredients.length);
+for (let i = 0; i < ingredients.length; i++) {
+  const ingredient = document.createElement("p");
+  ingredient.className = "level-item";
+  ingredient.textContent = ingredients[i]
+  ingredientsEl.append(ingredient);
+}
 messageBodyEl.appendChild(ingredientsEl);
 
 

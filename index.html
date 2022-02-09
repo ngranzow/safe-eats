@@ -170,14 +170,20 @@
             <!--Option to include Drink-->
             <div id="drink" class="control margin">
                 <label class="label">Add Drink?</label>
-                <input type="radio" name="yes_no"> Yes</input>
-                <input type="radio" name="yes_no" checked> No</input>
+                <input type="radio" name="yes_no" value="yes" id="yes"> Yes</input>
+                <input type="radio" name="yes_no" value="no" checked> No</input>
             </div>
 
             <!--Search Button - Submit & Search -->
+<<<<<<< HEAD
             <!--div class="margin"-->
                 <button  id = "search" type="submit" class="button">Search</button>
             <!--/div-->
+=======
+            <div class="margin">
+                <button type="submit" class="button" id="search-btn">Search</button>
+            </div>
+>>>>>>> 5a289b1d5c0baba3ba2d2f04410b530716b2f780
 
 
             <div>
@@ -185,7 +191,7 @@
                 <div id="saved_recipes"></div>
 
                 <!--Saved Recipes Button-->
-                <button type="reset" class="button">Reset Saved Recipes</button>
+                <button type="reset" class="button" id="reset-btn">Reset Saved Recipes</button>
             </div>
         </form>
 
@@ -216,8 +222,8 @@
         </footer>
 
         <!--Script for JS-->
-<script src = "./assets/script.js"></script>
-        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="./assets/script.js"></script>
 </body>
 
 </html>
