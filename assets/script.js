@@ -59,6 +59,8 @@ fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     console.error(err)
   })
 
+
+//const getRecipeTitleAndImage - define makeCard function 
 const getRecipeTitleAndImage = async (event) => {
   event.preventDefault();
   removeAllChildNodes(recipeFoodListEl);
@@ -70,10 +72,12 @@ const getRecipeTitleAndImage = async (event) => {
   makeCard(data, recipeFoodListEl);
 }
 
+
 function getCuisine() {
   const foodItems = [];
   const checkedItems = document.getElementsByClassName("cusine");
   for (let i = 0; i < checkedItems.length; i++) {
+
     if (checkedItems[i].checked === true) {
       foodItems.push(checkedItems[i].value);
     }
@@ -83,19 +87,23 @@ function getCuisine() {
 
 }
 
+
 function getAlergy() {
   let lifeStyleItems = [];
   let checkedItems = document.getElementsByClassName("intolerances");
   for (let i = 0; i < checkedItems.length; i++) {
     if (checkedItems[i].checked === true) {
       lifeStyleItems.push(checkedItems[i].value);
+
     }
   }
   const lifeStyle = lifeStyleItems.join(",");
   return lifeStyle;
 }
 
+
 async function getIngredient(id) {
+
   const ingredientArray = [];
   const response = await fetch(`https://api.spoonacular.com/food/products/search?query=${"ingredients"}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`);
   const data = await response.json();
@@ -108,6 +116,7 @@ async function getIngredient(id) {
   }
   return ingredientArray;
 }
+
 
 //make a card for recipe
 async function makeCard(data, _attachingEl) {
@@ -154,6 +163,7 @@ const recipeId = data.results[i].id
 //   ingredientsEl.append(ingredient);
 // }
 messageBodyEl.appendChild(ingredientsEl);
+
 
 
 // add previous meals to dom / local storage 
