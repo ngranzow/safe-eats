@@ -9,22 +9,22 @@
 //esultHeading = document.getElementById('result-heading');
 
 //API fetch request
-fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
-.then(function(response){
-return response.json();
-})
-fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
-    .then(function(response){
-  return response.json(); 
-})
+// fetch('https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c')
+// .then(function(response){
+// return response.json();
+// })
+// fetch('http://www.thecocktaildb.com/api/json/v1/1/search.php') 
+//     .then(function(response){
+//   return response.json(); 
+// })
 
-.then(function(comments){
+// .then(function(comments){
 
 
-  //console the comments with a four loop 
-  for (var i = 0; i < comments.length; i++){
-    console.log(comments[i]);
-  }}
+//   //console the comments with a four loop 
+//   for (var i = 0; i < comments.length; i++){
+//     console.log(comments[i]);
+//   }}
 
 
 const getRecipeTitleAndImage = async (event) => {
@@ -38,29 +38,36 @@ const getRecipeTitleAndImage = async (event) => {
   makeCard(data, recipeFoodListEl);
 }
 
-function getCuisine () {
-const foodItems = [];
-const checkedItems = document.getElementsByClassName("cusine");
-for (let i = 0; i < checkedItems.length; i++){
+function getAlergy() {
+  let lifeStyleItems = [];
+  let checkedItems = document.getElementsByClassName("Food Intolerances");
+  for (let i = 0; i < checkedItems.length; i++) {
     if (checkedItems[i].checked === true) {
-        foodItems.push(checkedItems[i].value);
+      lifeStyleItems.push(checkedItems[i].value);
     }
+  }
+  const lifeStyle = lifeStyleItems.join(",");
+  return lifeStyle;
 }
-const foodChoice = foodItems.join(",");
-return foodChoice;
 
+async function getIngredient(id) {
+  const ingredientArray = [];
+  const response = await fetch(`https://api.spoonacular.com/food/products/search?query&apiKey=4db28d341ddd49638dd20bb65bf0e98c`);
+  const data = await response.json();
+  console.log(data)
+  for (let i = 0; i < data.ingredients.length; i++) {
+    const ingredientName = await data.ingredients[i].name;
+    const measurement = await data.ingredients[i].amount.us.value + " " + data.ingredients[1].amount.us.unit;
+    const ingredientMeasurement = await ingredientName + ": " + measurement;
+    ingredientArray.push(ingredientMeasurement);
+  }
+  return ingredientArray;
 }
 
-function getAlergy () {
-    let lifeStyleItems = [];
-    let checkedItems = document.getElementsByClassName("Food Intolerances");
-    for (let i = 0; i < checkedItems.length; i++) {
-        if (checkedItems[i].checked === true) {
-            lifeStyleItems.push(checkedItems[i].value);
-        }
-    }
-    const lifeStyle = lifeStyleItems.join(",");
-    return lifeStyle;
+//make a card for recipe
+async function makeCard(data, _attachingEl) {
+  for (let i = 0; i < data.results.length; i++) {
+  }
 }
 
 async function getIngredient (id) {
@@ -189,3 +196,5 @@ function saveFunc(index) {
   }
 
     }
+
+    
