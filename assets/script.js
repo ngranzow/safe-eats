@@ -41,23 +41,23 @@ fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4d
     console.error(err)
   })
 
-fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data)
+// fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data)
    
 
-    //console the comments with a four loop 
-    for (var i = 0; i < data.length; i++){
-    console.log(data[i]);
-    }
-    return (data)
-  })
-  .catch(function (err) {
-    console.error(err)
-  })
+  //   //console the comments with a four loop 
+  //   for (var i = 0; i < data.length; i++){
+  //   console.log(data[i]);
+  //   }
+  //   return (data)
+  // })
+  // .catch(function (err) {
+  //   console.error(err)
+  // })
 
 
 //const getRecipeTitleAndImage - define makeCard function 
@@ -121,10 +121,7 @@ async function getIngredient(id) {
 //make a card for recipe
 async function makeCard(data, _attachingEl) {
   for (let i = 0; i < data.results.length; i++) {
-  }
-}
-
-// Create article element
+    // Create article element
 const articleEl = document.createElement("article");
 articleEl.className = "message";
 // Create header Element, Content, and Append
@@ -163,6 +160,10 @@ const recipeId = data.results[i].id
 //   ingredientsEl.append(ingredient);
 // }
 messageBodyEl.appendChild(ingredientsEl);
+  }
+}
+
+
 
 
 
@@ -285,4 +286,4 @@ function randomDrink() {
 randomDrink();
 
 
-searchForm.addEventListener("submit", handleSearchForm)
+// searchForm.addEventListener("submit", handleSearchForm)
