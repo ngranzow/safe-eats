@@ -3,7 +3,7 @@ function randoMeal() {
     var searchBtn = document.getElementById("search-btn");
     searchBtn.addEventListener("click", function () {
 
-        var mealApi = 'www.themealdb.com/api/json/v1/1/random.php';
+        var mealApi = 'https://www.themealdb.com/api/json/v1/1/random.php';
         fetch(mealApi)
         .then(function (mealResponse){
             return mealResponse.json();
@@ -28,7 +28,7 @@ function randoMeal() {
             var returnMeasure = noNullMeasure.join(", ")
             console.log(returnMeasure);
 
-            recipesEl.innerHTML = ("<div class='card'<div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div></div>");
+            recipesEl.innerHTML = ("<div class='card'<div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + mealImage + "' alt='" + mealName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + mealName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + mealInstructions + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div></div>");
 
           var maxSize = Math.max(noNullIngredients.length, noNullMeasure.length);
           var arrays = [];
