@@ -28,18 +28,18 @@ const searchImput = document.getElementById("search")
 //   for (var i = 0; i < comments.length; i++){
 //     console.log(comments[i]);
 //   }}
-var pasta = "pasta"
-//API fetch request
-fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data)
-  })
-  .catch(function (err) {
-    console.error(err)
-  })
+
+// //API fetch request
+// fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data)
+//   })
+//   .catch(function (err) {
+//     console.error(err)
+//   })
 
 // fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
 //   .then(function (response) {
@@ -60,16 +60,16 @@ fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4d
   // })
 
 
+
 //const getRecipeTitleAndImage - define makeCard function 
 const getRecipeTitleAndImage = async (event) => {
   event.preventDefault();
   removeAllChildNodes(recipeFoodListEl);
   const cuisine = getCuisine();
   const diet = getLifestyle();
-  const url = ' https://api.spoonacular.com/recipes/716429/information?includeNutrition=false'
-  const response = await fetch(url);
-  const data = await response.json();
-  makeCard(data, recipeFoodListEl);
+  var pasta = "pasta"
+//API fetch request
+
 }
 
 
@@ -234,10 +234,24 @@ function addMealToDOM(meal) {
   }
 
 }
+const searchBtn = document.getElementById("search-btn");
+const pasta = "pasta"
 function randomDrink() {
   var searchBtn = document.getElementById("search-btn");
   searchBtn.addEventListener("click", function () {
     var yesRadio = document.getElementById("yes").checked;
+    fetch(`https://api.spoonacular.com/food/products/search?query=${pasta}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data)
+    const recImage = document.getElementById("recipe-image");
+    const dataImaga = data.products[0].image;
+  })
+  .catch(function (err) {
+    console.error(err)
+  })
 
     if (yesRadio) {
       var drinkApi = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
