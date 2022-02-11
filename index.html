@@ -15,7 +15,7 @@
     <!--CSS Styles Sheet Link-->
     <link rel="stylesheet" href="./assets/css/style.css">
 
-   
+
 </head>
 
 <body>
@@ -32,7 +32,7 @@
 
     <!--Content-->
     <main class="columns">
-        <form  id="search-form" class="column is-3 border form">
+        <form id="search-form" class="column is-3 border form">
 
             <!--Recipe Search-->
             <div class="search_keywords">
@@ -120,7 +120,7 @@
             <div id="intolerances" class="margin">
                 <h3>Intolerances</h3>
                 <label for="Dairy" class="label">
-                    <input type="checkbox" name="Dairy" value="Dairy" class="checkbox"/>
+                    <input type="checkbox" name="Dairy" value="Dairy" class="checkbox" />
                     Dairy
                 </label>
                 <label for="Egg" class="label">
@@ -178,7 +178,7 @@
 
             <!--Search Button - Submit & Search -->
             <!--div class="margin"-->
-                <button  id="search-btn" type="button" class="button">Search</button>
+            <button id="search-btn" type="button" class="button">Search</button>
             <!--/div-->
 
 
@@ -193,19 +193,11 @@
 
         <!--Generated Recipes Display-->
         <div class="column border">
-            <div id="recipes">
-                <img src="" alt="" id="recipe-image"/>
+            <div id="drinkRecipe">
+
             </div>
+            <div id="recipes">
 
-            <!-- Trigger/Open The Modal -->
-            <button id="myBtn" class="modal">View Recipe</button>
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal"></div>
-
-            <!-- Modal content -->
-            <div id="modal-content" class="modal-content modal">
-                <span class="close">&times;</span>
             </div>
 
         </div>
@@ -213,15 +205,27 @@
         </div>
     </main>
 
-        <!--Footer-->
-        <footer>
-            <h5>© 2022 - Safe Eats</h5>
-        </footer>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <div class="modal-background"></div>
 
-        <!--Script for JS-->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="./assets/script.js"></script>
-        <script src="./assets/randomeal.js"></script>
+        <!-- Modal content -->
+        <div id="modal-content" class="modal-content">
+
+        </div>
+        <button class='modal-close close is-medium' aria-label='close'></button>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <h5>© 2022 - Safe Eats</h5>
+    </footer>
+
+    <!--Script for JS-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/script.js"></script>
+    <!-- <script src="./assets/randomeal.js"></script> -->
 
 </body>
+
 </html>
