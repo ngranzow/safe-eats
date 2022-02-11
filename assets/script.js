@@ -35,7 +35,7 @@ function allRecipes() {
 
                   console.log(foodImage, foodTitle, foodTime, foodLink)
 
-                  recipesContent.innerHTML = ("<div class='card'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
+                  recipesContent.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
 
                   recipesEl.appendChild(recipesContent);
 
@@ -44,7 +44,7 @@ function allRecipes() {
                       modalBtn.addEventListener("click", function () {
                           const modalContent = document.getElementById("modal-content");
                           document.getElementById("myModal").style.display = "inline";
-                          modalContent.innerHTML = ("<div class='card'><div class='card-content'></div></div>")
+                          modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>")
 
                           const closeModalBtn = document.querySelector(".close");
                           closeModalBtn.addEventListener("click", function () {
@@ -79,7 +79,7 @@ function allRecipes() {
             const returnMeasure = noNullMeasure.join(", ")
             console.log(returnMeasure);
   
-            drinkRecipesEl.innerHTML = ("<div class='card'><div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
+            drinkRecipesEl.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><button id='myBtn' class='button'>View Recipe</button></div></div></div></div><br>");
   
             function drinkModal() {
               const modalBtn = document.getElementById("myBtn");
