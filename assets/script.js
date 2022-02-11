@@ -35,7 +35,7 @@ function allRecipes() {
 
                   console.log(foodImage, foodTitle, foodTime, foodLink)
 
-                  recipesContent.innerHTML = ("<div class='card'><div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='https://spoonacular.com/recipeImages/" + foodImage[i] + "' alt='" + foodTitle[i] + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle[i] + "</h4><p><strong>Approximate time:</strong> " + foodTime[i] + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
+                  recipesContent.innerHTML = ("<div class='card'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
 
                   recipesEl.appendChild(recipesContent);
 

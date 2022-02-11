@@ -103,6 +103,9 @@ h3 {
     color: var(--secondary);
 }
 
+.food-image {
+    max-width: 200px;
+}
 
 .button {
     margin-bottom: 2%;
