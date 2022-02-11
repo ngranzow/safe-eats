@@ -294,7 +294,7 @@ function randomDrink() {
               console.log(returnMeasure);
               var modalContent = document.getElementById("modal-content");
               modalContent.classList.remove("modal");
-              modalContent.innerHTML = ("<div class='card'<div class='card-content'><button type='button' class='close'>&times;</button><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p></div></div></div></div></div>");
+              modalContent.innerHTML = ("<div class='card'<div class='card-content'><button type='reset' class='close button'>&times;</button><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p></div></div></div></div></div>");
 
               var maxSize = Math.max(noNullIngredients.length, noNullMeasure.length);
               var arrays = [];
@@ -313,14 +313,12 @@ function randomDrink() {
 
               $("#ingredient-table").append(columns);
 
-              function closeModal() {
-                var closeModalBtn = document.getElementsByClassName("close");
+                var closeModalBtn = document.querySelector(".close");
                 closeModalBtn.addEventListener("click", function() {
-                modalContent.classList.add("modal");
-                modalContent.innerHTML = "";
-              })
-              }
-              closeModal();
+                  modalContent.innerHTML = "";
+                  modalContent.classList.add("modal");
+                })
+            
             })
 
           }
