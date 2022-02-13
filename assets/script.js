@@ -33,6 +33,8 @@ function allRecipes() {
                   const foodTime = foodData.results[i].readyInMinutes;
                   const foodLink = foodData.results[i].sourceUrl;
 
+                  localStorage.setItem(JSON.stringify(foodTitle), JSON.stringify(foodLink));
+
                   console.log(foodImage, foodTitle, foodTime, foodLink)
 
                   recipesContent.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
