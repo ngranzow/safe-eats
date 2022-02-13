@@ -1,6 +1,13 @@
+//VARIABLES
+
+//FUNCTIONS
+// allRecipes Function - Search for Meal & Drink Recipes
 function allRecipes() {
   const searchBtn = document.getElementById("search-btn");
+
+  //Search Button Click - Event Listener
   searchBtn.addEventListener("click", function () {
+      //variables - search selection criteria
       const yesRadio = document.getElementById("yes").checked;
       const textInput = document.getElementById("search").value;
       const textInUS = textInput.replaceAll(" ", "_");
@@ -15,9 +22,10 @@ function allRecipes() {
 
       const intChkStr = intolerancesCheck.join(",");
 
-
+      //console log
       console.log(yesRadio, textInput, mealTypeDrop, cuisineDrop, dietDrop, intChkStr);
 
+      //API Fetch - Meal Recipes
       fetch(`https://api.spoonacular.com/recipes/search?query=${textInUS}&type=${mealTypeDrop}&cuisine=${cuisineDrop}&diet=${dietDrop}&intolerances=${intChkStr}&apiKey=4db28d341ddd49638dd20bb65bf0e98c`)
           .then(function (foodResponse) {
               return foodResponse.json();
@@ -38,6 +46,24 @@ function allRecipes() {
                   recipesContent.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
 
                   recipesEl.appendChild(recipesContent);
+
+                  //Meal Recipe Modal
+                  // When the user clicks on the button, open the modal
+                      btn.onclick = function() {
+                        modal.style.display = "block";
+                        }
+                    
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function() {
+                        modal.style.display = "none";
+                        }
+                    
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                        }
 
                   function foodModal() {
                       const modalBtn = document.getElementById("myBtn");
@@ -134,4 +160,5 @@ function allRecipes() {
   })
 }
 
+//ACTIONS
 allRecipes();
