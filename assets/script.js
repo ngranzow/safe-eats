@@ -33,6 +33,8 @@ function allRecipes() {
           .then(function (foodData) {
               console.log(foodData);
               console.log(foodData.results.length);
+
+              //Recipe Display Loop
               for (var i = 0; i < foodData.results.length; i++) {
                   const recipesEl = document.getElementById("recipes");
                   var recipesContent = document.createElement("div")
@@ -43,35 +45,24 @@ function allRecipes() {
 
                   console.log(foodImage, foodTitle, foodTime, foodLink)
 
+                  //Display Recipe Content 
                   recipesContent.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class='image'><img class='food-image' src='https://spoonacular.com/recipeImages/" + foodImage + "' alt='" + foodTitle + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + foodTitle + "</h4><p><strong>Approximate time:</strong> " + foodTime + "</p><button id='myBtn' class='button'>View Recipe</button></div></div></div></div>");
 
                   recipesEl.appendChild(recipesContent);
 
-                  //Meal Recipe Modal
-                  // When the user clicks on the button, open the modal
-                      btn.onclick = function() {
-                        modal.style.display = "block";
-                        }
-                    
-                        // When the user clicks on <span> (x), close the modal
-                        span.onclick = function() {
-                        modal.style.display = "none";
-                        }
-                    
-                        // When the user clicks anywhere outside of the modal, close it
-                        window.onclick = function(event) {
-                        if (event.target == modal) {
-                            modal.style.display = "none";
-                        }
-                        }
-
+                  //Meal Recipe Card Modal
                   function foodModal() {
                       const modalBtn = document.getElementById("myBtn");
                       modalBtn.addEventListener("click", function () {
                           const modalContent = document.getElementById("modal-content");
                           document.getElementById("myModal").style.display = "inline";
+
+                          //Modal Recipe Card Display & Save Button Display
                           modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>")
 
+                          //Save Recipe Event Listener
+
+                          //Close Modal Event Listener
                           const closeModalBtn = document.querySelector(".close");
                           closeModalBtn.addEventListener("click", function () {
                               modalContent.innerHTML = "";
@@ -159,6 +150,11 @@ function allRecipes() {
       }
   })
 }
+
+
+
+
+
 
 //ACTIONS
 allRecipes();
