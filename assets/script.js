@@ -93,7 +93,7 @@ function allRecipes() {
                                 selectSaved.textContent = foodTitle;
                                 selectSaved.classList = "margin";
                                 selectSaved.setAttribute("recipe", savedRecipe);
-                                selectSaved.setAttribute("type", "submit");
+                                selectSaved.setAttribute("type", "button");
 
                                 savedRecipeBtn.prepend(selectSaved); 
                               }
