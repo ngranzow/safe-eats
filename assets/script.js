@@ -1,6 +1,7 @@
 //VARIABLES
   //Saved Recipes
   var savedRecipes = [];
+  var savedRecipeBtn = document.querySelector("#saved_recipes");
 
 //FUNCTIONS
 // allRecipes Function - Search for Meal & Drink Recipes
@@ -66,9 +67,10 @@ function allRecipes() {
 
                           //Save Recipe Event Listener
                             $("#save-recipe").on("click", function()
-                            {
+                            { 
                               //Selected Recipe
-                              var selectedRecipe = foodTitle.val().trim();
+                              savedRecipes.push(selectedRecipe);
+                              var selectedRecipe = modalContent;
                               $("#saved_recipes").append(selectedRecipe);                           
 
                               //Locally Store Saved Recipe
@@ -76,7 +78,7 @@ function allRecipes() {
                               console.log(savedRecipes);
 
                               //Display Selected Recipe on Saved Recipes List
-                              
+                              savedRecipe(selectedRecipe);
 
                             })
                             
@@ -179,7 +181,30 @@ function allRecipes() {
   })
 }
 
+// Save Recipe List
+  //savedRecipe function - button selection
+  var savedRecipe = function (savedRecipe) {
+    console.log(savedRecipe);
 
+    selectSaved = document.createElement("button");
+    selectSaved.textContent = savedRecipe;
+    selectSaved.classList = "margin";
+    selectSaved.setAttribute("data-recipe", savedRecipe);
+    selectSaved.setAttribute("type", "submit");
+
+    savedRecipeBtn.prepend(selectSaved); 
+  }
+
+  //searchSaved function - shows saved recipe content
+  var searchSaved = function (event) {
+    var foodLink = event.target.getAttribute("data-recipe")
+
+    modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>");
+
+  }
+
+  //eventListener
+  savedRecipeBtn.addEventListener("click", searchSaved);
 
 
 
