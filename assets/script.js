@@ -53,6 +53,8 @@ function allRecipes() {
                   //Meal Recipe Card Modal
                   function foodModal() {
                       const modalBtn = document.getElementById("myBtn");
+
+                      //Open Recipe Event Listener
                       modalBtn.addEventListener("click", function () {
                           const modalContent = document.getElementById("modal-content");
                           document.getElementById("myModal").style.display = "inline";
@@ -74,8 +76,11 @@ function allRecipes() {
               }
 
           })
-
+      
+      //Drink Recipe Option
       if (yesRadio) {
+
+        //API Fetch - Drink Recipe
         const drinkApi = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
         fetch(drinkApi)
           .then(function (drinkResponse) {
@@ -95,11 +100,15 @@ function allRecipes() {
             const noNullMeasure = drinkMeasureArray.filter(x => x !== null);
             const returnMeasure = noNullMeasure.join(", ")
             console.log(returnMeasure);
-  
+            
+            //Drink Recipe Display
             drinkRecipesEl.innerHTML = ("<div class='card card-size'><div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><button id='myBtn' class='button'>View Recipe</button></div></div></div></div><br>");
-  
+            
+            //Drink Recipe Modal
             function drinkModal() {
               const modalBtn = document.getElementById("myBtn");
+
+              //Open Recipe Event Listener
               modalBtn.addEventListener("click", function () {
                 console.log("click");
                 const drinkImage = drinkData.drinks[0].strDrinkThumb + "/preview";
@@ -114,6 +123,8 @@ function allRecipes() {
                 const noNullMeasure = drinkMeasureArray.filter(x => x !== null);
                 const returnMeasure = noNullMeasure.join(", ")
                 console.log(returnMeasure);
+
+                //Drink Recipe Card Display
                 const modalContent = document.getElementById("modal-content");
                 document.getElementById("myModal").style.display = "inline";
                 modalContent.innerHTML = ("<div class='card'><div class='card-content'><div class='media'><div class='media-left'><figure class'image is-32x32'><img src='" + drinkImage + "' alt='" + drinkName + "'></figure></div><div class='media-content'><div class='content'><p><h4>" + drinkName + "</h4><br><strong>Ingredients:</strong><table id='ingredient-table'></table></p><p><strong>Directions:</strong> " + drinkInstructions + "</p></div></div></div></div></div>");
@@ -134,7 +145,8 @@ function allRecipes() {
                 })
   
                 $("#ingredient-table").append(columns);
-  
+
+                  //Close Modal Event Listener
                   const closeModalBtn = document.querySelector(".close");
                   closeModalBtn.addEventListener("click", function() {
                     modalContent.innerHTML = "";
