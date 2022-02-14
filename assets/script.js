@@ -64,24 +64,56 @@ function allRecipes() {
 
                           //Modal Recipe Card Display & Save Button Display
                           modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>")
+                          
 
-                          //Save Recipe Event Listener
-                            $("#save-recipe").on("click", function()
-                            { 
-                              //Selected Recipe
-                              savedRecipes.push(selectedRecipe);
-                              var selectedRecipe = modalContent;
-                              $("#saved_recipes").append(selectedRecipe);                           
+                          // Save Recipe List
+                              //Save Recipe Event Listener
+                              $("#save-recipe").on("click", function()
+                              { 
+                                //Selected Recipe
+                                savedRecipes.push(selectedRecipe);
+                                var selectedRecipe = $(`foodLink`);
+                                $("#saved_recipes").append(selectedRecipe);                           
 
-                              //Locally Store Saved Recipe
-                              localStorage.setItem("foodTitle", JSON.stringify(savedRecipes));
-                              console.log(savedRecipes);
+                                //Locally Store Saved Recipe
+                                localStorage.setItem("recipe", JSON.stringify(savedRecipes));
+                                console.log(savedRecipes);
 
-                              //Display Selected Recipe on Saved Recipes List
-                              savedRecipe(selectedRecipe);
+                                //Display Selected Recipe on Saved Recipes List
+                                //var selectedRecipe = foodTitle;
+                                savedRecipe(selectedRecipe);
 
-                            })
-                            
+                              })
+  
+                              //savedRecipe function - button selection
+                              var savedRecipe = function (savedRecipe) {
+                                console.log(savedRecipe);
+
+                                selectSaved = document.createElement("button");
+                                selectSaved.textContent = foodTitle;
+                                selectSaved.classList = "margin";
+                                selectSaved.setAttribute("recipe", savedRecipe);
+                                selectSaved.setAttribute("type", "submit");
+
+                                savedRecipeBtn.prepend(selectSaved); 
+                              }
+
+                              //searchSaved function - shows saved recipe content
+                              var searchSaved = function (event) {
+                                var foodLink = event.target.getAttribute("recipe")
+
+                                const modalContent = document.getElementById("modal-content");
+                                document.getElementById("myModal").style.display = "inline";
+      
+                                //Modal Recipe Card Display & Save Button Display
+                                modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>")
+
+                              }
+
+                              //eventListener
+                              savedRecipeBtn.addEventListener("click", searchSaved);
+
+
                           //Close Modal Event Listener
                           const closeModalBtn = document.querySelector(".close");
                           closeModalBtn.addEventListener("click", function () {
@@ -181,30 +213,7 @@ function allRecipes() {
   })
 }
 
-// Save Recipe List
-  //savedRecipe function - button selection
-  var savedRecipe = function (savedRecipe) {
-    console.log(savedRecipe);
 
-    selectSaved = document.createElement("button");
-    selectSaved.textContent = savedRecipe;
-    selectSaved.classList = "margin";
-    selectSaved.setAttribute("data-recipe", savedRecipe);
-    selectSaved.setAttribute("type", "submit");
-
-    savedRecipeBtn.prepend(selectSaved); 
-  }
-
-  //searchSaved function - shows saved recipe content
-  var searchSaved = function (event) {
-    var foodLink = event.target.getAttribute("data-recipe")
-
-    modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>");
-
-  }
-
-  //eventListener
-  savedRecipeBtn.addEventListener("click", searchSaved);
 
 
 
