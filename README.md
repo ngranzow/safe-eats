@@ -37,7 +37,7 @@ GIVEN a Recipe Generator with form inputs and selection criteria
 https://ngranzow.github.io/safe-eats/
 
 <h2>Screenshot</h2>
-<img src="(https://ngranzow.github.io/safe-eats/assets/images/safe_eats.png"/>
+<img src="https://ngranzow.github.io/safe-eats/assets/images/safe_eats.png" />
 
 
 <h2>Contribution</h2>
