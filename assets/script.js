@@ -1,4 +1,6 @@
 //VARIABLES
+  //Saved Recipes
+  var savedRecipes = [];
 
 //FUNCTIONS
 // allRecipes Function - Search for Meal & Drink Recipes
@@ -63,7 +65,21 @@ function allRecipes() {
                           modalContent.innerHTML = ("<div class='card'><div class='card-content'><iframe src='" + foodLink + "'></iframe><div><button id='save-recipe' type='button' class='button'>Save Recipe</button></div></div></div>")
 
                           //Save Recipe Event Listener
+                            $("#save-recipe").on("click", function()
+                            {
+                              //Selected Recipe
+                              var selectedRecipe = foodTitle.val().trim();
+                              $("#saved_recipes").append(selectedRecipe);                           
 
+                              //Locally Store Saved Recipe
+                              localStorage.setItem("foodTitle", JSON.stringify(savedRecipes));
+                              console.log(savedRecipes);
+
+                              //Display Selected Recipe on Saved Recipes List
+                              
+
+                            })
+                            
                           //Close Modal Event Listener
                           const closeModalBtn = document.querySelector(".close");
                           closeModalBtn.addEventListener("click", function () {
