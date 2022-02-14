@@ -72,7 +72,8 @@ function allRecipes() {
                               { 
                                 //Selected Recipe
                                 savedRecipes.push(selectedRecipe);
-                                var selectedRecipe = $(`foodLink`);
+                                //var selectedRecipe = $(`foodLink`);
+                                var selectedRecipe = foodData.results[i].sourceUrl;
                                 $("#saved_recipes").append(selectedRecipe);                           
 
                                 //Locally Store Saved Recipe
